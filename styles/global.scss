@@ -1,0 +1,496 @@
+:root {
+    --primary: #103F91; //#2B388F;
+    --faint-blue: #EFF3F8; /*#f0f4f8;*/
+    --app-top-bar-height: 32px;
+    --status-bar-height: 15px;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+body {
+    background: #ECECEC;
+
+    .custom-editable-input {
+        outline: none;
+        padding: 0 10px 5px 10px;
+        border-bottom: 1px solid rgba(34,36,38,.15);
+    }
+
+    .status-bar {
+        text-align: center;
+        color: #5a5a5a;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 40;
+        font-size: 12px;
+        padding: .2rem;
+        background-color: #F5F5F5;
+        display: flex;
+
+        .left {
+            width: 50%;
+            text-align: center;
+            padding-top: .3rem;
+        }
+
+        .right {
+            width: 50%;
+
+            div {
+                width: 150px;
+                float: left;
+            }
+        }
+    }
+}
+
+.topbar {
+    text-align: center;
+    background-color: var(--primary); //#F5F5F5;
+    border-bottom: 1px solid #cccccc;
+    width: 100%;
+    height: var(--app-top-bar-height);
+    z-index: 10;
+    color: white;
+    
+    .app-logo {
+        position: absolute;
+        left: 1rem;
+        top: 4px;
+        height: calc(var(--app-top-bar-height) - 10px);
+        width: calc(var(--app-top-bar-height) - 10px);
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .app-title {
+        -webkit-app-region: drag;
+        width: calc(100% - 133px);
+        padding: .5rem 0;
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .window-controllers {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: table;
+        z-index: 80;
+        width: 133px;
+        
+        i {
+            padding: .429rem 1rem;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+
+            &:hover {
+                background-color: rgb(199, 199, 199);
+                color: white;
+            }
+
+            &:nth-child(n+3):hover {
+                background-color: red;
+            }
+        }
+    }
+}
+
+.ribbon {
+    background: #F5F5F5;
+    width: 100%;
+    padding: .5rem 1rem .7rem 1rem;
+    border-bottom: 1px solid #DEDEDE;
+    -webkit-user-select: none;
+    user-select: none;
+
+    .tabs {
+        width: 100%;
+        padding-bottom: 1.2rem;
+        cursor: default;
+
+        span {
+            color: #464646;
+            padding: .3rem .6rem .3rem .6rem;
+            margin-right: .7rem;
+            margin-bottom: .7rem;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: default;
+
+            &.tab-selected {
+                border-bottom: 2px solid var(--primary);
+                color: var(--primary);
+            }
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+    }
+    .groups {
+        
+        .group {
+            &:not(#groupCreate) {
+                display: none;
+            }
+            span {
+                padding: .5rem .3rem .5rem .3rem;
+                margin-right: .3rem;
+                margin-top: .5rem;
+                cursor: default;
+
+                i {
+                    padding-right: 1rem;
+                    font-size: 17px;
+                }
+
+                &:hover {
+                    background-color: #DEDEDE;
+                }
+
+                &.isActive {
+                    background-color: #DEDEDE;
+                }
+            }
+        }
+    }
+}
+
+.file-modal {
+    position: fixed;
+    top: 30px;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    background-color: #F5F5F5;
+    z-index: 100;
+    transition: left .2s ease-in-out;
+
+    .properties {
+        width: 150px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #ECECEC;
+
+        h3 {
+            // padding: 1rem 1rem 0 1rem;
+            font-weight: bold;
+            font-size: 15px;
+            color: #666666;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            .property-selected {
+                background-color: var(--primary);
+                color: white;
+
+                &:hover {
+                    background-color: var(--primary);
+                    color: white;
+                }
+            }
+
+            li {
+                padding: 1rem;
+                font-weight: bold;
+                font-size: 15px;
+                color: #666666;
+                -webkit-user-select: none;
+                user-select: none;
+
+                &:first-child:hover,
+                &:nth-child(n+3):hover {
+                    background-color: #DEDEDE;
+                }
+
+                i {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .property-details-stage {
+        position: absolute;
+        left: 150px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 1rem;
+
+        .property-detail:not(#newDetail) {
+            display: none;
+        }
+
+        .property-detail {
+            h3 {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+        }
+
+        #newDetail {
+            .ui.checkbox {
+                margin-right: 1rem;
+            }
+        }
+
+        #saveAsDetail {
+            .left {
+                width: 250px;
+                float: left;
+                height: 85vh;
+                border-right: 1px solid rgb(226, 226, 226);
+                padding-right: 2rem;
+
+                button {
+                    span {
+                        margin-left: .5rem;
+                    }
+                }
+            }
+            .right {
+                width: calc(100% - 250px);
+                float: left;
+                padding-left: 2rem;
+            }
+        }
+    }
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    
+        .row {
+            
+            &.platform {
+                height: calc(100vh - 70.8px - 32px - var(--app-top-bar-height));
+                overflow: auto;
+                width: 99% !important;
+                margin: 0 auto;
+
+                .ui.grid {
+                    margin: 0;
+                }
+
+                .paper {
+                    width: 80%;
+                    min-height: 297mm;
+                    background: rgba(255, 255, 255, 1);
+                    padding: 2rem 1rem;
+                    width: 820px;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    color: black !important;
+                    transition: transform .1s;
+
+                    strong,
+                    h3 {
+                        pointer-events: none !important;
+                        -webkit-user-select: none;
+                        user-select: none;
+                    }
+
+                    h3 {
+                        text-align: center;
+                    }
+
+                    #appendedItemsContainer {
+
+                        .add-item-btn-container {
+                            text-align: center;
+                        }
+
+                        .hidden-item-collector {
+                            display: none;
+                        }
+
+                        .hidden-item-collector-show {
+                            display: block !important;
+                        }
+                    }
+
+                    #patientDetailsUnderline {
+                        display: none;
+                    }
+
+                    .ui.table td.ten.wide,
+                    .ui.table th.ten.wide {
+                        width: 0;
+                    }
+
+                    #tblTotalContainer {
+                        font-size: 1.1rem;
+                        font-weight: bolder;
+
+                        td#total {
+                            text-align: center;
+                        }
+                    }
+
+                    #doa,
+                    #dod,
+                    #dop {
+                        .custom-editable-input {
+                            display: none;
+                        }
+
+                        .input {
+                            margin-top: -8px;
+                            height: 2.4rem;
+                        }
+                    }
+
+                    .ui.table {
+                        margin: 0;
+
+                        td {
+                            padding: .5rem 0;
+                        }
+                    }
+
+                    .ui.input>input {
+                        border-width: 0 0 1px 0 !important;
+                        border-radius: 0;
+                    }
+
+                    table.tbl-surgery,
+                    table.tbl-dental,
+                    table.tbl-delivery,
+                    table.tbl-endoscopy,
+                    table.tbl-spectacles,
+                    table.tbl-lab,
+                    table.tbl-medication {
+
+                        thead:first-child,
+                        td:first-child {
+                            -webkit-user-select: none;
+                            user-select: none;
+                        }
+
+                        th:nth-child(n+2),
+                        td:nth-child(n+4),
+                        td:nth-child(n+2) .custom-editable-input {
+                            text-align: center;
+                        }
+                    }
+
+                    .qtyValue,
+                    .rateValue {
+                        margin: 0 .5rem;
+                        padding-bottom: 0 !important;
+                    }
+
+                    #total {
+                        text-align: center;
+                    }
+
+                    tr:hover i.remove-item {
+                        color: #333;
+                        visibility: visible;
+                    }
+
+                    td {
+                        position: relative;
+
+                        i.remove-item {
+                            position: absolute;
+                            right: 0;
+                            font-size: 18px;
+                            cursor: pointer;
+                            visibility: hidden;
+                        }
+                    }
+
+                    .manager-signature-container {
+                        visibility: hidden;
+                    }
+                }
+            }
+    }
+
+    #surgeryAreaWrapper,
+    #deliveryAreaWrapper,
+    #dentalAreaWrapper,
+    #endoscopyAreaWrapper,
+    #spectaclesAreaWrapper,
+    #labAreaWrapper,
+    #medicationAreaWrapper {
+        display: none;
+    }
+}
+
+#printModal {
+    .icon {
+        display: none;
+    }
+
+    .content {
+        input {
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .ui.selection.dropdown {
+            padding-left: 0;
+            border: none;
+
+            input.search {
+                pointer-events: none !important;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+        }
+
+        button, .icon {
+            display: none;
+        }
+
+        div>.divider {
+            display: none;
+        }
+    }
+}
+
+#editItemModal {
+    .custom-editable-input {
+        border: none;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 1000px) {
+    .ribbon {
+    
+        &>span {
+            width: 0;
+        }
+
+        label {
+            width: calc(100% - 400px);
+            text-align: left;
+        }
+    }
+}

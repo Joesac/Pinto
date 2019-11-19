@@ -1,0 +1,168 @@
+body {
+  color: black !important;
+}
+
+.company-info {
+  margin-bottom: 5rem;
+}
+
+.company-info .company-logo-wrapper {
+  width: 100%;
+}
+
+.company-info .company-logo-wrapper .left,
+.company-info .company-logo-wrapper .right {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  padding-top: 1rem;
+}
+
+.company-info .company-logo-wrapper .left img,
+.company-info .company-logo-wrapper .right img {
+  width: 100%;
+  height: auto;
+}
+
+.company-info .company-logo-wrapper .left {
+  left: 0;
+}
+
+.company-info .company-logo-wrapper .right {
+  right: 0;
+}
+
+.company-info h2, .company-info h4 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.company-info h4 {
+  font-size: 12px;
+}
+
+.company-info #infoText {
+  text-align: center;
+}
+
+#container {
+  font-size: 12px;
+}
+
+#container h3 {
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+
+#container .ui.grid > .column:not(.row) {
+  padding-top: 0 !important;
+  padding-bottom: .2rem;
+}
+
+#container .ui.table td.ten.wide,
+#container .ui.table th.ten.wide {
+  width: 0;
+}
+
+#container #tblTotalContainer {
+  font-size: 14px;
+  font-weight: bolder;
+  border-bottom: 2px solid black;
+}
+
+#container #tblTotalContainer td#total {
+  text-align: center;
+}
+
+#container input {
+  border: none !important;
+  padding: 0 !important;
+}
+
+#container #patientDetails {
+  margin-bottom: 1rem;
+}
+
+#container #patientDetails .ui.fluid.input > input {
+  display: none !important;
+}
+
+#container #patientDetails .ui.fluid.input > input #doa .custom-editable-input,
+#container #patientDetails .ui.fluid.input > input #dod .custom-editable-input,
+#container #patientDetails .ui.fluid.input > input #dop .custom-editable-input {
+  display: none;
+}
+
+#container .ui.selection.dropdown {
+  padding-left: 0;
+  border: none;
+}
+
+#container button, #container .icon {
+  display: none;
+}
+
+#container .ui.table tr td {
+  border-top: 1px solid black;
+  padding: .2rem 0;
+}
+
+#container div > .divider {
+  display: none;
+}
+
+#container .ui[class*="very basic"].table {
+  border: none;
+}
+
+#container .ui.table thead th {
+  border-color: black;
+}
+
+#container table.tbl-surgery th:nth-child(n+2),
+#container table.tbl-surgery td:nth-child(n+4),
+#container table.tbl-surgery td:nth-child(n+2) .custom-editable-input,
+#container table.tbl-dental th:nth-child(n+2),
+#container table.tbl-dental td:nth-child(n+4),
+#container table.tbl-dental td:nth-child(n+2) .custom-editable-input,
+#container table.tbl-delivery th:nth-child(n+2),
+#container table.tbl-delivery td:nth-child(n+4),
+#container table.tbl-delivery td:nth-child(n+2) .custom-editable-input,
+#container table.tbl-endoscopy th:nth-child(n+2),
+#container table.tbl-endoscopy td:nth-child(n+4),
+#container table.tbl-endoscopy td:nth-child(n+2) .custom-editable-input,
+#container table.tbl-spectacles th:nth-child(n+2),
+#container table.tbl-spectacles td:nth-child(n+4),
+#container table.tbl-spectacles td:nth-child(n+2) .custom-editable-input,
+#container table.tbl-medication th:nth-child(n+2),
+#container table.tbl-medication td:nth-child(n+4),
+#container table.tbl-medication td:nth-child(n+2) .custom-editable-input,
+#container table.tbl-lab th:nth-child(n+2),
+#container table.tbl-lab td:nth-child(n+4),
+#container table.tbl-lab td:nth-child(n+2) .custom-editable-input {
+  text-align: center;
+}
+
+#container table.tbl-surgery .hidden-item-collector,
+#container table.tbl-dental .hidden-item-collector,
+#container table.tbl-delivery .hidden-item-collector,
+#container table.tbl-endoscopy .hidden-item-collector,
+#container table.tbl-spectacles .hidden-item-collector,
+#container table.tbl-medication .hidden-item-collector,
+#container table.tbl-lab .hidden-item-collector {
+  display: none;
+}
+
+#container .manager-signature-container {
+  visibility: visible;
+  width: 200px;
+  text-align: left;
+  margin-top: 3rem;
+}
+
+#container .manager-signature-container hr {
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin-top: 2.5rem;
+}

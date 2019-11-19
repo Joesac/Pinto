@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon" >
+    <title>Pint</title>
+    <link rel="stylesheet" href="../vendor/semantic-ui/semantic.min.css">
+    <link rel="stylesheet" href="../vendor//semantic-ui/calendar.min.css">
+    <link rel="stylesheet" href="../vendor//semantic-ui/range-slider.min.css">
+    <link rel="stylesheet" href="../styles/global.min.css">
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="app-logo"><img src="../../assets/title-bar-icon.png"></div>
+        <div class="app-title">Pinto!</div>
+        <div class="window-controllers">
+            <i class="icon window minimize outline window-minimize"></i>
+            <i class="icon window maximize outline window-maximize"></i>
+            <i class="icon close window-close"></i>
+        </div>
+    </div>
+
+    <div class="ribbon">
+        <div class="tabs">
+            <span id="file" class="tab">File</span>
+            <span id="create" class="tab tab-selected">Create</span>
+            <!-- <span id="view" class="tab">View</span> -->
+            <span id="external" class="tab">External</span>
+            <span id="settings" class="tab">Settings</span>
+        </div>
+        <div class="groups">
+            <div id="groupCreate" class="group">
+                <span id="btnAddSurgeryArea" title="Create Surgery Section">
+                    <i class="icon cut"></i>Surgery
+                </span>
+                <span id="btnAddDeliveryArea" title="Create Delivery Section">
+                    <i class="icon bath"></i>Delivery
+                </span>
+                <span id="btnAddDentalArea" title="Create Dental Section">
+                    <i class="icon user md"></i>Dental
+                </span>
+                <span id="btnAddEndoscopyArea" title="Create Endoscopy Section">
+                    <i class="icon openid"></i>Endoscopy
+                </span>
+                <span id="btnAddSpectaclesArea" title="Create Spectacles Section">
+                    <i class="icon eye"></i>Spectacles
+                </span>
+                <span id="btnAddLabArea" title="Create Lab & Investication Section">
+                    <i class="icon medkit"></i>Lab & Investigation
+                </span>
+                <span id="btnAddMedicationArea" title="Create Medication Section">
+                    <i class="icon pills"></i>Medication
+                </span>
+            </div>
+            <!-- <div id="groupView" class="group">
+                <span class="" id="btnAddDentalArea">
+                    View
+                </span>
+            </div> -->
+            <div id="groupExternal" class="group">
+                <span class="" id="btnExport">
+                    <i class="icon external square alternate"></i>Export
+                </span>
+                <span class="btnImport">
+                    <i class="icon cloud download"></i>Import
+                </span>
+            </div>
+            <div id="groupSettings" class="group">
+                <span class="" id="btnOpenAddNewModal">
+                    <i class="icon plus"></i>Add New Item(s)
+                </span>
+                <span class="" id="btnOpenEditModal">
+                    <i class="icon edit outline"></i>Edit Item(s)
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        
+        <div class="row platform">
+            <div class="ui two column grid">
+                <div class="paper" id="paper">
+                    <div class="ui two column grid" id="patientDetails">
+                        <div class="column">
+                            <div class="ui grid left aligned">
+                                <div class="seven wide column"><strong>Patient</strong></div>
+                                <div class="nine wide column">
+                                    <div contentEditable="true" class="custom-editable-input" id="patientName"></div>
+                                </div>
+                                
+                                <div class="seven wide column"><strong>Date of Admission</strong></div>
+                                <div class="nine wide column">
+                                    <div class="ui calendar" id="doa">
+                                        <div class="ui  fluid input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" placeholder="Date">
+                                        </div>
+                                        <span contenteditable="true" class="custom-editable-input"></span>
+                                    </div>
+                                </div>
+                                <div class="seven wide column"><strong>Date of Procedure</strong></div>
+                                <div class="nine wide column">
+                                    <div class="ui calendar" id="dop">
+                                        <div class="ui fluid input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" placeholder="Date">
+                                        </div>
+                                        <span contenteditable="true" class="custom-editable-input"></span>
+                                    </div>  
+                                </div>
+                                <div class="seven wide column"><strong>Date of Discharge</strong></div>
+                                <div class="nine wide column">
+                                    <div class="ui calendar" id="dod">
+                                        <div class="ui fluid input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" placeholder="Date">
+                                        </div>
+                                        <span contenteditable="true" class="custom-editable-input"></span>
+                                    </div>
+                                </div>
+                                <div class="seven wide column"><strong>Diagnosis</strong></div>
+                                <div class="nine wide column">
+                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui grid left aligned">
+                                <div class="five wide column"><strong>Consultant</strong></div>
+                                <div class="eleven wide column">
+                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                </div>
+                                <div class="five wide column"><strong>Employer</strong></div>
+                                <div class="eleven wide column">
+                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                </div>
+                                <div class="five wide column"><strong>Membership</strong></div>
+                                <div class="eleven wide column">
+                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                </div>
+                                <div class="five wide column"><strong>Employee/Options</strong></div>
+                                <div class="eleven wide column">
+                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                </div>
+                                <div class="five wide column"><strong>Procedure</strong></div>
+                                <div class="eleven wide column">
+                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider" id="patientDetailsUnderline" style="border-top: 1px solid black; border-bottom: none;"></div>
+                    <div id="appendedItemsContainer"></div>
+                    
+                    <div id="tblTotalContainer">
+                        <table class="ui very basic table" id="tblTotal">
+                            <thead>
+                                <tr>
+                                    <th class="thirteen wide"></th>
+                                    <th class="three wide"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total</td>
+                                    <td id="total">0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="manager-signature-container">
+                        <p>Finance Manager</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Items to append to the paper -->
+        <div id="surgeryAreaWrapper">
+            <div class="surgeryAreaInnerWrapper">
+
+                <div class="ui divider"></div>
+
+                <h3>Surgery</h3>
+                <table class="ui very basic table tbl-surgery">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Surgery Fee</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Theatre</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Consumables</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Nursing</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Accommodation</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large btnAddSurgeryItem" style="background-color: #ff8711; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="deliveryAreaWrapper">
+            <div class="deliveryAreaInnerWrapper">
+
+                <div class="ui divider"></div>
+
+                <h3>Delivery</h3>
+                <table class="ui very basic table tbl-delivery">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Surgery Fee</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Pediatrician Care</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Theatre Fees</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Consumables</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Nursing Care</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Disposable C/S Pack</td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input qtyValue"></div>
+                            </td>
+                            <td>
+                                <div contentEditable="true" class="custom-editable-input rateValue"></div>
+                            </td>
+                            <td><span>0.00</span><input type="hidden" value="0"><i class="icon trash remove-item" title="Remove this item"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large teal btnAddDeliveryItem" style="background-color: #1496ef; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <div id="dentalAreaWrapper">
+            <div class="dentalAreaInnerWrapper">
+
+                <div class="ui divider"></div>
+                <h3>Dental</h3>
+                <table class="ui very basic table tbl-dental">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large teal btnAddDentalItem" style="background-color: #e04d80; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="endoscopyAreaWrapper">
+            <div class="endoscopyAreaInnerWrapper">
+
+                <div class="ui divider"></div>
+                <h3>Endoscopy</h3>
+                <table class="ui very basic table tbl-endoscopy">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large teal btnAddEndoscopyItem" style="background-color: #2abf30; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="spectaclesAreaWrapper">
+            <div class="spectaclesAreaInnerWrapper">
+
+                <div class="ui divider"></div>
+                <h3>Spectacles</h3>
+                <table class="ui very basic table tbl-spectacles">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large teal btnAddSpectaclesItem" style="background-color: #f3295f; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="labAreaWrapper">
+            <div class="labAreaInnerWrapper">
+
+                <div class="ui divider"></div>
+                <h3>Lab & Investigation</h3>
+                <table class="ui very basic table tbl-lab">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large teal btnAddLabItem" style="background-color: #ff1a09; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="medicationAreaWrapper">
+            <div class="medicationAreaInnerWrapper">
+                <div class="ui divider"></div>
+
+                <h3>Medication</h3>
+                <table class="ui very basic table tbl-medication">
+                    <thead>
+                        <tr>
+                            <th class="ten wide">Description</th>
+                            <th class="three wide">Qty</th>
+                            <th class="three wide">Rate</th>
+                            <th class="three wide">Amount(GHC)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                
+                <div class="ui grid aligned center add-item-btn-container">
+                    <div class="wide column">
+                        <div class="ui divider"></div>
+                        <button class="ui icon button circular large teal btnAddMedicationItem" style="background-color: #00bfff; color: white;">
+                            <i class="icon add"></i> Add Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Items to append to paper -->
+    </div>
+
+    <div class="status-bar">
+        <div class="left">
+            <span>Plainblue Company</span>
+        </div>
+        <div class="right">
+            <div class="ui mini input" style="width: 50px;">
+                <input type="text" value="100" id="viewLevelInput">
+            </div>
+            <div class="ui range" id="zoomSlider" style="width: 150px;"></div>
+        </div>
+    </div>
+
+    <!-- Add New Item Modal -->
+    <div class="ui modal small" id="AddNewModal">
+        <i class="close icon"></i>
+        <div class="header">
+          Add New Item
+        </div>
+        <div class="content">
+            <form class="ui fluid form">
+                <div class="ui column grid">
+                    <div class="row">
+                        <div class="column">
+                            <select name="" id="selectTbl" class="ui dropdown fluid">
+                                <option value="">Select Category</option>
+                                <option value="general_items">General Items</option>
+                                <option value="medications">Medications</option>
+                                <option value="labs">Labs & Investigations</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="ui fluid icon input">
+                                <input type="text" placeholder="Enter item to add" id="txtItemToAdd">
+                            </div>
+                            <div class="ui pointing red basic label error" style="visibility: hidden;">
+                                Please enter a value
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="actions">
+            <div class="ui primary button" id="btnAdd">Add</div>
+            <div class="ui red deny button" id="btnCloseAddModal">Close</div>
+        </div>
+    </div>
+    
+    <!-- Edit Items Modal -->
+    <div class="ui modal" id="editItemModal">
+        <i class="close icon"></i>
+        <div class="header">
+          Edit
+        </div>
+        <div class="content scrolling">
+            <form class="ui fluid form">
+                <div class="ui column grid">
+                    <div class="row">
+                        <div class="column">
+                            <div class="ui selection dropdown fluid" id="selectTblEdit">
+                                <input type="hidden" name="gender">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Select Item</div>
+                                <div class="menu">
+                                    <div class="item" data-value="general_items">General Items</div>
+                                    <div class="item" data-value="medications">Medications</div>
+                                    <div class="item" data-value="labs">Labs and Investigations</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <table class="ui selectable celled table" id="tblExistingItems">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="actions">
+            <div class="ui red deny button">Close</div>
+        </div>
+    </div>
+
+    <!-- For putting the html to export so that removals can be done -->
+    <div id="hiddenExportContainer" style="display: none;"></div>
+
+    <!-- File Modal -->
+    <div class="file-modal">
+        <div class="properties">
+            <ul>
+                <li id="closeMenu"><i class="icon arrow circle left"></i></li>
+                <li><h3>Properties</h3></li>
+                <li class="property-item property-selected" id="new">New</li>
+                <li class="property-item" id="open">Open</li>
+                <!-- <li class="property-item" id="save">Save</li> -->
+                <li class="property-item" id="saveAs">Save As</li>
+                <li class="property-item" id="print">Print</li>
+                <li class="property-item window-close" id="exit">Exit</li>
+            </ul>
+        </div>
+        <div class="property-details-stage">
+            <div class="property-detail" id="newDetail">
+                <h3>New</h3>
+                <!-- <div class="ui input mini">
+                    <input type="text" placeholder="Untitle.pit" value="Untitled.pit">
+                </div><br /> -->
+                <div class="ui divider"></div>
+                Choose Section(s) to add<br /><br />
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkSurgery" id="chkSurgery">
+                    <label>Surgery</label>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkDelivery" id="chkDelivery">
+                    <label>Delivery</label>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkDental" id="chkDental">
+                    <label>Dental</label>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkEndoscopy" id="chkEndoscopy">
+                    <label>Endoscopy</label>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkSpectacles" id="chkSpectacles">
+                    <label>Spectacles</label>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkLab" id="chkLab">
+                    <label>Lab & Investigation</label>
+                </div>
+                <div class="ui checkbox">
+                    <input type="checkbox" name="chkMedication" id="chkMedication">
+                    <label>Medication</label>
+                </div><br /><br /><br />
+
+                <button class="ui button blue" id="btnCreate" style="width: 150px;">Create</button>
+            </div>
+            <div class="property-detail" id="openDetail">
+                <h3>Open</h3>
+                <button class="ui blue button btnImport">Import</button>
+            </div>
+            <div class="property-detail" id="saveDetail"><h3>Save</h3></div>
+            <div class="property-detail" id="saveAsDetail"><h3>Save As</h3>
+                <div class="left">
+                    <!-- <button class="ui button icon fluid blue" style="margin-bottom: 1rem;"><i class="icon desktop"></i><span>This PC</span></button> -->
+                    <button class="ui button icon fluid blue" data-content="Save as PDF" data-position="bottom center" id="btnSave"><i class="icon folder outline"></i><span>Browse</span></button>
+                </div>
+                
+                <!-- <div class="right">
+                    <button class="ui button">
+                        <i class="icon folder ui top aligned tiny image" style="font-size: 50px"></i>
+                        <span class="desktop-path"></span>
+                    </button>
+                    <div class="ui divider"></div>
+                    <button class="ui button">
+                        <i class="icon folder ui top aligned tiny image" style="font-size: 50px"></i>
+                        <span class="document-path"></span>
+                    </button>
+                </div> -->
+            </div>
+            <div class="property-detail" id="printDetail"><h3>Print</h3>
+                <div class="ui grid">
+                    
+                    <div class="five wide column">
+                        <button class="ui button icon" id="btnPrint">
+                            <i class="icon print" style="font-size: 50px;"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="eleven wide column">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (typeof module === 'object') {
+            window.module = module; 
+            module = undefined;
+        }
+    </script>
+    <script src="../vendor/jquery-3.4.1.min.js"></script>
+    <script src="../vendor/semantic-ui/semantic.min.js"></script>
+    <script src="../vendor/semantic-ui/calendar.min.js"></script>
+    <script src="../vendor/semantic-ui/range-slider.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        // require("./index.js");
+        if (window.module) module = window.module;
+    </script>
+</body>
+</html>

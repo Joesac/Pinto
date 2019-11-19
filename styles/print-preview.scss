@@ -1,0 +1,165 @@
+body {
+    color: black !important;
+}
+
+.company-info {
+    margin-bottom: 5rem;
+
+    .company-logo-wrapper {
+        width: 100%;
+        // position: relative;
+
+        .left, 
+        .right {
+            position: absolute;
+            top: 0;
+            width: 80px;
+            padding-top: 1rem;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
+
+        // .company-logo {
+        //     position: absolute;
+        //     right: 0;
+        //     top: 0;
+        //     width: 80px;
+    
+            
+        // }
+    }
+
+    h2, h4 {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    h4 {
+        font-size: 12px;
+    }
+
+    #infoText {
+        text-align: center;
+    }
+}
+
+#container {
+    
+    font-size: 12px;
+
+    h3 {
+        text-decoration: underline;
+        margin-bottom: 0;
+    }
+
+    .ui.grid>.column:not(.row) {
+        padding-top: 0 !important;
+        padding-bottom: .2rem;
+    }
+
+    .ui.table td.ten.wide,
+    .ui.table th.ten.wide {
+        width: 0;
+    }
+
+    #tblTotalContainer {
+        font-size: 14px;
+        font-weight: bolder;
+        border-bottom: 2px solid black;
+
+        td#total {
+            text-align: center;
+        }
+    }
+    
+    input {
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    #patientDetails {
+
+        margin-bottom: 1rem;
+
+        .ui.fluid.input>input {
+            display: none !important;   
+            
+            #doa,
+            #dod,
+            #dop {
+                .custom-editable-input {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .ui.selection.dropdown {
+        padding-left: 0;
+        border: none;
+    }
+
+    button, .icon {
+        display: none;
+    }
+    
+    .ui.table tr td {
+        border-top: 1px solid black;
+        padding: .2rem 0;
+    }
+
+    div>.divider {
+        display: none;
+    }
+
+    .ui[class*="very basic"].table {
+        border: none;
+    }
+
+    .ui.table thead th {
+        border-color: black;
+    }
+
+    table.tbl-surgery,
+    table.tbl-dental,
+    table.tbl-delivery,
+    table.tbl-endoscopy,
+    table.tbl-spectacles,
+    table.tbl-medication,
+    table.tbl-lab {
+        th:nth-child(n+2),
+        td:nth-child(n+4),
+        td:nth-child(n+2) .custom-editable-input {
+            text-align: center;
+        }
+
+        .hidden-item-collector {
+            display: none;
+        }
+    }
+
+    .manager-signature-container {
+        visibility: visible;
+        width: 200px;
+        text-align: left;
+        margin-top: 3rem;
+
+        hr {
+            width: 200px;
+            border: none;
+            border-bottom: 1px solid black;
+            margin-top: 2.5rem;
+        }
+    }
+}
