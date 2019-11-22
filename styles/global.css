@@ -271,7 +271,7 @@ body .status-bar .right div {
 }
 
 .wrapper .row.platform {
-  height: calc(100vh - 70.8px - 32px - var(--app-top-bar-height));
+  height: calc(100vh - 75px - 32px - var(--app-top-bar-height));
   overflow: auto;
   width: 99% !important;
   margin: 0 auto;
