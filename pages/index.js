@@ -77,7 +77,8 @@ $(function() {
         fileModal = $('.file-modal'),
         fileTab = $('#file'),
         viewLevelInput = $('#viewLevelInput'),
-        zoomSlider = $("#zoomSlider");
+        zoomSlider = $("#zoomSlider"),
+        hiddenExportContainer = $("#hiddenExportContainer");
 
     $('.ui.dropdown').dropdown();
     $('.ui.button').popup();
@@ -604,19 +605,41 @@ $(function() {
 
     // Show print preview window
     btnPrint.on("click", () => {
-        ipc.send('print-automatically', paper.html());
+
+        // Remove the dropdown elements from the exported Template
+        hiddenExportContainer.html(paper.html())
+            .find("div.ui.dropdown.selectItem").remove()
+
+        // Show the hidden element that holds the selected element
+        hiddenExportContainer.find('.hidden-item-collector').addClass('hidden-item-collector-show').removeClass('hidden-item-collector')
+
+        // ipc.send('export', hiddenExportContainer.html())
+        
+        ipc.send('print-automatically', hiddenExportContainer.html());
         fileModal.css("left", "-100%")
+
+        // Empty the hidden export container
+        hiddenExportContainer.empty();
     });
 
     // Save the file
     btnSave.on("click", () => {
-        ipc.send('print-to-pdf', paper.html());
+        
+        // Remove the dropdown elements from the exported Template
+        hiddenExportContainer.html(paper.html())
+            .find("div.ui.dropdown.selectItem").remove()
+
+        // Show the hidden element that holds the selected element
+        hiddenExportContainer.find('.hidden-item-collector').addClass('hidden-item-collector-show').removeClass('hidden-item-collector')
+
+        ipc.send('print-to-pdf', hiddenExportContainer.html());
         fileModal.css("left", "-100%");
+
+        hiddenExportContainer.empty();
     });
 
     // Export a template
     btnExport.on("click", () => {
-        hiddenExportContainer = $("#hiddenExportContainer");
 
         // Remove the dropdown elements from the exported Template
         hiddenExportContainer.html(paper.html())
@@ -629,8 +652,6 @@ $(function() {
 
         // Empty the hidden export container
         hiddenExportContainer.empty();
-
-        // ipc.send('export', paper.html())
     })
 
     // Import a template
@@ -658,6 +679,31 @@ $(function() {
                     type: 'date'
                     // minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate())
                 });
+
+                // Hightlight the buttons under create tab if that item is already added
+                let className = "isActive";
+                $("#groupCreate span").removeClass(className);
+                if (paper.find($('.surgeryAreaInnerWrapper')).length) {
+                    $('#btnAddSurgeryArea').addClass(className)
+                }
+                if (paper.find($('.deliveryAreaInnerWrapper')).length) {
+                    $('#btnAddDeliveryArea').addClass(className)
+                }
+                if (paper.find($('.dentalAreaInnerWrapper')).length) {
+                    $('#btnAddDentalArea').addClass(className)
+                }
+                if (paper.find($('.endoscopyAreaInnerWrapper')).length) {
+                    $('#btnAddEndoscopyArea').addClass(className)
+                }
+                if (paper.find($('.spectaclesAreaInnerWrapper')).length) {
+                    $('#btnAddSpectaclesArea').addClass(className)
+                }
+                if (paper.find($('.labAreaInnerWrapper')).length) {
+                    $('#btnAddLabArea').addClass(className)
+                }
+                if (paper.find($('.medicationAreaInnerWrapper')).length) {
+                    $('#btnAddMedicationArea').addClass(className)
+                }
             });
         }
     })
@@ -734,7 +780,6 @@ $(function() {
         spec = $("#chkSpectacles").prop("checked"),
         lab = $("#chkLab").prop("checked"),
         medi = $("#chkMedication").prop("checked"),
-
         className = "isActive";
 
         appendedItemsContainer.empty();

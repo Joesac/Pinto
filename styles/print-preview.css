@@ -103,7 +103,7 @@ body {
 }
 
 #container .ui.table tr td {
-  border-top: 1px solid black;
+  border: none;
   padding: .2rem 0;
 }
 
