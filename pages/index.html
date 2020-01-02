@@ -7,8 +7,8 @@
     <link rel="shortcut icon" href="../assets/logo.ico" type="image/x-icon" >
     <title>Pint</title>
     <link rel="stylesheet" href="../vendor/semantic-ui/semantic.min.css">
-    <link rel="stylesheet" href="../vendor//semantic-ui/calendar.min.css">
-    <link rel="stylesheet" href="../vendor//semantic-ui/range-slider.min.css">
+    <link rel="stylesheet" href="../vendor/semantic-ui/calendar.min.css">
+    <link rel="stylesheet" href="../vendor/semantic-ui/range-slider.min.css">
     <link rel="stylesheet" href="../styles/global.min.css">
 </head>
 <body>
@@ -87,33 +87,48 @@
                     <div class="ui two column grid" id="patientDetails">
                         <div class="column">
                             <div class="ui grid left aligned">
-                                <div class="six wide column" style="padding-right: 0;"><strong>Patient's name:</strong></div>
-                                <div class="ten wide column" style="padding-left: 0;">
-                                    <div contentEditable="true" class="custom-editable-input" id="patientName"></div>
-                                </div>
-                                
-                                <div class="six wide column" style="padding-right: 0;"><strong>Date of Admission:</strong></div>
-                                <div class="ten wide column" style="padding-left: 0;">
-                                    <div class="ui calendar" id="doa">
-                                        <div class="ui  fluid input left icon">
-                                            <i class="calendar icon"></i>
-                                            <input type="text" placeholder="Date">
-                                        </div>
-                                        <span contenteditable="true" class="custom-editable-input"></span>
+                                <div class="row" draggable="true">
+                                    <div class="six wide column" style="padding-right: 0;"><strong>Patient's name:</strong></div>
+                                    <div class="ten wide column" style="padding-left: 0;">
+                                        <div contentEditable="true" class="custom-editable-input" id="patientName"></div>
                                     </div>
                                 </div>
-                                <div class="six wide column" style="padding-right: 0;"><strong>Date of Procedure:</strong></div>
-                                <div class="ten wide column" style="padding-left: 0;">
-                                    <div class="ui calendar" id="dop">
-                                        <div class="ui fluid input left icon">
-                                            <i class="calendar icon"></i>
-                                            <input type="text" placeholder="Date">
+                                <div class="row removable" draggable="true">
+                                    <div class="six wide column" style="padding-right: 0;">
+                                        <strong>Date of Admission:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="ten wide column" style="padding-left: 0;">
+                                        <div class="ui calendar" id="doa">
+                                            <div class="ui  fluid input left icon">
+                                                <i class="calendar icon"></i>
+                                                <input type="text" placeholder="Date">
+                                            </div>
+                                            <span contenteditable="true" class="custom-editable-input"></span>
                                         </div>
-                                        <span contenteditable="true" class="custom-editable-input"></span>
-                                    </div>  
+                                    </div>
                                 </div>
-                                <div class="six wide column" style="padding-right: 0;"><strong>Date of Discharge:</strong></div>
-                                <div class="ten wide column" style="padding-left: 0;">
+                                <div class="row removable" draggable="true">
+                                    <div class="six wide column" style="padding-right: 0;">
+                                        <strong>Date of Procedure:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="ten wide column" style="padding-left: 0;">
+                                        <div class="ui calendar" id="dop">
+                                            <div class="ui fluid input left icon">
+                                                <i class="calendar icon"></i>
+                                                <input type="text" placeholder="Date">
+                                            </div>
+                                            <span contenteditable="true" class="custom-editable-input"></span>
+                                        </div>  
+                                    </div>
+                                </div>
+                                <div class="row removable" draggable="true">
+                                    <div class="six wide column" style="padding-right: 0;">
+                                        <strong>Date of Discharge:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="ten wide column" style="padding-left: 0;">
                                     <div class="ui calendar" id="dod">
                                         <div class="ui fluid input left icon">
                                             <i class="calendar icon"></i>
@@ -121,34 +136,62 @@
                                         </div>
                                         <span contenteditable="true" class="custom-editable-input"></span>
                                     </div>
+                                    </div>
                                 </div>
-                                <div class="six wide column" style="padding-right: 0;"><strong>Diagnosis:</strong></div>
-                                <div class="ten wide column" style="padding-left: 0;">
-                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                <div class="row removable" draggable="true">
+                                    <div class="six wide column" style="padding-right: 0;">
+                                        <strong>Diagnosis:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="ten wide column" style="padding-left: 0;">
+                                        <div contentEditable="true" class="custom-editable-input"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="column">
                             <div class="ui grid left aligned">
-                                <div class="five wide column"><strong>Consultant:</strong></div>
-                                <div class="eleven wide column">
-                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                <div class="row removable" draggable="true">
+                                    <div class="five wide column">
+                                        <strong>Consultant:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="eleven wide column">
+                                        <div contentEditable="true" class="custom-editable-input"></div>
+                                    </div>
                                 </div>
-                                <div class="five wide column"><strong>Employer:</strong></div>
-                                <div class="eleven wide column">
-                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                <div class="row removable" draggable="true">
+                                    <div class="five wide column"><strong>Employer:</strong></div>
+                                    <div class="eleven wide column">
+                                        <div contentEditable="true" class="custom-editable-input"></div>
+                                    </div>
                                 </div>
-                                <div class="five wide column"><strong>Membership:</strong></div>
-                                <div class="eleven wide column">
-                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                <div class="row removable" draggable="true">
+                                    <div class="five wide column">
+                                        <strong>Membership:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="eleven wide column">
+                                        <div contentEditable="true" class="custom-editable-input"></div>
+                                    </div>
                                 </div>
-                                <div class="five wide column"><strong>Employee/Options:</strong></div>
-                                <div class="eleven wide column">
-                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                <div class="row removable" draggable="true">
+                                    <div class="five wide column">
+                                        <strong>Employee/Options:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="eleven wide column">
+                                        <div contentEditable="true" class="custom-editable-input"></div>
+                                    </div>
                                 </div>
-                                <div class="five wide column"><strong>Procedure:</strong></div>
-                                <div class="eleven wide column">
-                                    <div contentEditable="true" class="custom-editable-input"></div>
+                                <div class="row removable" draggable="true">
+                                    <div class="five wide column">
+                                        <strong>Procedure:</strong>
+                                        <i class="icon trash remove-component"></i>
+                                    </div>
+                                    <div class="eleven wide column">
+                                        <div contentEditable="true" class="custom-editable-input"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

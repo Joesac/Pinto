@@ -369,17 +369,65 @@ $(function() {
         return tempCorrectedNum + '.' + decimalPart
     }
 
+    // Dragging and Dropping Details component
+    let draggedItem = null
+    let detailComponents = document.querySelectorAll('#patientDetails .row');
+    let columns = document.querySelectorAll('#patientDetails .grid');
+
+    for (i = 0; i < detailComponents.length; i++) {
+        item = detailComponents[i]
+        item.addEventListener('dragstart', function() {
+            draggedItem = this
+            setTimeout(function() {
+                // draggedItem.style.display = 'none'
+            }, 0)
+        })
+
+        item.addEventListener('dragend', function() {
+            setTimeout(function() {
+                // draggedItem.style.display = 'block'
+                draggedItem = null
+            }, 0)
+        })
+
+        for (j = 0; j < columns.length; j++) {
+            const column = columns[j]
+            column.addEventListener('dragover', function(e) {
+                e.preventDefault()
+                this.style.border = "2px dashed #ccc"
+            })
+
+            column.addEventListener('dragenter', function(e) {
+                e.preventDefault()
+                // this.style.border = "2px dashed #ccc"
+            })
+
+            column.addEventListener('dragleave', function(e) {
+                e.preventDefault()
+            })
+
+            column.addEventListener('drop', function() {
+                this.append(draggedItem)
+                // this.style.border = "none"
+                $("#patientDetails .grid").css("border", "none")
+            })
+        }
+    }
+    
+
     // Handle Qty and Rate multiplication values
     paper.on('keyup', '.qtyValue', function() {
+        let $this = $(this)
 
-        var tdObj = $(this).closest('tr').find('td');
+        var tdObj = $this.closest('tr').find('td');
         var hiddenInput = tdObj.siblings('td:last-child').children('input')
         var displaySpan = tdObj.siblings('td:last-child').children('span')
 
-        hiddenInput.val(($(this).text() * tdObj.find('.rateValue').text()).toFixed(2))
+        let normalizeQtyVal = $this.text() || 1
+        hiddenInput.val((normalizeQtyVal * tdObj.find('.rateValue').text()).toFixed(2))
         displaySpan.text(
-            formatNumberToCurrencyFormat(($(this).text() * tdObj.find('.rateValue').text()).toFixed(2))
-        );
+            formatNumberToCurrencyFormat((normalizeQtyVal * tdObj.find('.rateValue').text()).toFixed(2))
+            );
 
         let tds = paper.find("table.basic:not('#tblTotal')").find("td:nth-child(4)").children("input");
         
@@ -396,9 +444,11 @@ $(function() {
         var hiddenInput = tdObj.siblings('td:last-child').children('input')
         var displaySpan = tdObj.siblings('td:last-child').children('span')
 
-        hiddenInput.val(($(this).text() * tdObj.find('.qtyValue').text()).toFixed(2))
+        let normalizeQtyVal = tdObj.find('.qtyValue').text() || 1
+
+        hiddenInput.val(($(this).text() * normalizeQtyVal).toFixed(2))
         displaySpan.text(
-            formatNumberToCurrencyFormat(($(this).text() * tdObj.find('.qtyValue').text()).toFixed(2))
+            formatNumberToCurrencyFormat(($(this).text() * normalizeQtyVal).toFixed(2))
         );
 
         let tds = paper.find("table.basic:not('#tblTotal')").find("td:nth-child(4)").children("input");
@@ -505,6 +555,11 @@ $(function() {
 
          totalVal.text(formatNumberToCurrencyFormat(total.toFixed(2)));
     });
+
+    // Remove the components in the preamble
+    paper.on("click", ".remove-component", function() {
+        $(this).closest(".removable").remove()
+    })
 
     // Open Add New Item
     openAddNewModal.on("click", () => {

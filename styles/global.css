@@ -435,6 +435,23 @@ body .status-bar .right div {
   visibility: hidden;
 }
 
+.wrapper .row.platform .paper .removable {
+  position: relative;
+}
+
+.wrapper .row.platform .paper .removable i.icon.remove-component {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  cursor: pointer;
+  left: -10px;
+}
+
+.wrapper .row.platform .paper .removable:hover i.icon.remove-component {
+  display: inline-block;
+}
+
 .wrapper #surgeryAreaWrapper,
 .wrapper #deliveryAreaWrapper,
 .wrapper #dentalAreaWrapper,

@@ -316,7 +316,7 @@ body {
                     h3 {
                         text-align: center;
                     }
-
+                    
                     #appendedItemsContainer {
 
                         .add-item-btn-container {
@@ -426,6 +426,23 @@ body {
 
                     .manager-signature-container {
                         visibility: hidden;
+                    }
+
+                    .removable {
+                        position: relative;
+
+                        i.icon.remove-component {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            display: none;
+                            cursor: pointer;
+                            left: -10px;
+                        }
+
+                        &:hover i.icon.remove-component{
+                            display: inline-block;
+                        }
                     }
                 }
             }
